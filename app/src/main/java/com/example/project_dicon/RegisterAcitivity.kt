@@ -20,17 +20,17 @@ class RegisterActivity : AppCompatActivity() {
 
         auth = Firebase.auth
 
-        val register_NAME = findViewById<EditText>(R.id.register_name)
-        val register_EMAIL = findViewById<EditText>(R.id.register_email)
-        val register_ID = findViewById<EditText>(R.id.register_id)
-        val register_PW = findViewById<EditText>(R.id.register_pw)
-        val register_PW_CHK = findViewById<EditText>(R.id.register_pw_chk)
-        val button_register = findViewById<Button>(R.id.button_register)
-
-        val db = Firebase.firestore
+        var register_NAME = findViewById<EditText>(R.id.register_name)
+        var register_EMAIL = findViewById<EditText>(R.id.register_email)
+        var register_ID = findViewById<EditText>(R.id.register_id)
+        var register_PW = findViewById<EditText>(R.id.register_pw)
+        var register_PW_CHK = findViewById<EditText>(R.id.register_pw_chk)
+        var button_register = findViewById<Button>(R.id.button_register)
 
         button_register.setOnClickListener {
-            auth.createUserWithEmailAndPassword(register_EMAIL.toString(), register_PW.toString())
+            register_EMAIL = findViewById<EditText>(R.id.register_email)
+            register_PW = findViewById<EditText>(R.id.register_pw)
+            auth.createUserWithEmailAndPassword(register_EMAIL.text.toString(), register_PW.text.toString())
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         goMain()
