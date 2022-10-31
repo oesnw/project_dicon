@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Spinner
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -14,6 +15,7 @@ import com.google.firebase.ktx.Firebase
 private lateinit var auth: FirebaseAuth
 
 class RegisterActivity : AppCompatActivity() {
+    val db = Firebase.firestore
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
@@ -26,6 +28,9 @@ class RegisterActivity : AppCompatActivity() {
         var register_PW = findViewById<EditText>(R.id.register_pw)
         var register_PW_CHK = findViewById<EditText>(R.id.register_pw_chk)
         var button_register = findViewById<Button>(R.id.button_register)
+        var register_year = findViewById<Spinner>(R.id.register_year)
+        var register_month = findViewById<Spinner>(R.id.register_month)
+        var register_day = findViewById<Spinner>(R.id.register_day)
 
         button_register.setOnClickListener {
             register_EMAIL = findViewById<EditText>(R.id.register_email)
@@ -39,6 +44,14 @@ class RegisterActivity : AppCompatActivity() {
                     }
                 }
         }
+
+        val user = hashMapOf(
+            "name" to register_NAME.text.toString(),
+            "ID" to register_ID.text.toString(),
+            "year" to register_year,
+            "month" to register_month,
+            "day" to register_day
+        )
     }
 
     private fun goMain()

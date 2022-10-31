@@ -15,7 +15,6 @@ import com.google.firebase.ktx.Firebase
 private lateinit var auth: FirebaseAuth
 
 class LoginActivity : AppCompatActivity() {
-    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
