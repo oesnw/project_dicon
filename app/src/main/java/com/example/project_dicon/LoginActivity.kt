@@ -21,14 +21,14 @@ class LoginActivity : AppCompatActivity() {
 
         auth = Firebase.auth
 
-        var login_ID = findViewById<EditText>(R.id.login_id)
+        var login_EMAIL = findViewById<EditText>(R.id.login_email)
         var login_PW = findViewById<EditText>(R.id.login_pw)
         var button_login = findViewById<Button>(R.id.button_login)
 
         button_login.setOnClickListener {
-            login_ID = findViewById<EditText>(R.id.login_id)
+            login_EMAIL = findViewById<EditText>(R.id.login_email)
             login_PW = findViewById<EditText>(R.id.login_pw)
-            auth.signInWithEmailAndPassword(login_ID.text.toString(), login_PW.text.toString())
+            auth.signInWithEmailAndPassword(login_EMAIL.text.toString(), login_PW.text.toString())
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         goMain()
